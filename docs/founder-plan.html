@@ -1,0 +1,1528 @@
+<title>Voluntinder Founder Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Shippori+Mincho:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+  :root {
+    --ground: #f4f7f5;
+    --surface: #ffffff;
+    --surface-sunk: #eaefec;
+    --ink: #12211e;
+    --ink-mid: #3d514c;
+    --ink-mute: #61736e;
+    --cedar: #1c5b4a;
+    --cedar-soft: #e2ece8;
+    --signal: #c0611b;
+    --signal-soft: #f8ebdf;
+    --rule: #d8e2dd;
+    --rule-strong: #b9c8c2;
+
+    --display: 'Newsreader', 'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+    --body: 'IBM Plex Sans', 'Zen Kaku Gothic New', 'Hiragino Sans', 'Yu Gothic UI', system-ui, sans-serif;
+    --mono: 'IBM Plex Mono', 'Zen Kaku Gothic New', ui-monospace, monospace;
+
+    --measure: 68ch;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0d1513;
+      --surface: #14201d;
+      --surface-sunk: #101a18;
+      --ink: #e6edea;
+      --ink-mid: #b5c5c0;
+      --ink-mute: #8b9d98;
+      --cedar: #5cbba0;
+      --cedar-soft: #16302a;
+      --signal: #e0913f;
+      --signal-soft: #2e2015;
+      --rule: #24332f;
+      --rule-strong: #35473f;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #0d1513;
+    --surface: #14201d;
+    --surface-sunk: #101a18;
+    --ink: #e6edea;
+    --ink-mid: #b5c5c0;
+    --ink-mute: #8b9d98;
+    --cedar: #5cbba0;
+    --cedar-soft: #16302a;
+    --signal: #e0913f;
+    --signal-soft: #2e2015;
+    --rule: #24332f;
+    --rule-strong: #35473f;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .shell {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding-inline: 20px;
+    padding-block: 0 88px;
+  }
+
+  /* ---------- masthead ---------- */
+
+  .masthead {
+    padding-block: 56px 34px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+
+  .kicker {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cedar);
+    margin: 0 0 18px;
+  }
+
+  .masthead h1 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(2.6rem, 8vw, 4.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.022em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .standfirst {
+    font-family: var(--display);
+    font-size: clamp(1.05rem, 2.6vw, 1.32rem);
+    line-height: 1.62;
+    color: var(--ink-mid);
+    max-width: 34em;
+    margin: 20px 0 0;
+    text-wrap: pretty;
+  }
+
+  .masthead-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 26px;
+    margin-top: 30px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.05em;
+    color: var(--ink-mute);
+  }
+
+  /* ---------- two-column frame ---------- */
+
+  .frame {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  @media (min-width: 940px) {
+    .frame {
+      grid-template-columns: 210px minmax(0, 1fr);
+      gap: 56px;
+      align-items: start;
+    }
+  }
+
+  .rail { display: none; }
+
+  @media (min-width: 940px) {
+    .rail {
+      display: block;
+      position: sticky;
+      top: 28px;
+      padding-top: 46px;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      line-height: 1.5;
+    }
+  }
+
+  .rail-heading {
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .rail ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .rail a {
+    color: var(--ink-mid);
+    text-decoration: none;
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 4px;
+  }
+
+  .rail a:hover { color: var(--cedar); }
+  .rail a span:first-child { color: var(--ink-mute); }
+
+  .rail-note {
+    margin-top: 22px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    color: var(--ink-mute);
+    line-height: 1.65;
+  }
+
+  .rail-note strong {
+    display: block;
+    color: var(--cedar);
+    font-size: 15px;
+    letter-spacing: 0;
+    font-weight: 600;
+  }
+
+  /* ---------- sections ---------- */
+
+  .col { min-width: 0; }
+
+  section {
+    padding-top: 46px;
+    scroll-margin-top: 20px;
+  }
+
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    border-bottom: 1px solid var(--rule-strong);
+    padding-bottom: 9px;
+    margin-bottom: 24px;
+  }
+
+  .sec-num {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--cedar);
+    flex-shrink: 0;
+  }
+
+  .sec-head h2 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(1.5rem, 4vw, 1.95rem);
+    letter-spacing: -0.014em;
+    line-height: 1.2;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  h3 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.12rem;
+    line-height: 1.4;
+    margin: 30px 0 8px;
+    text-wrap: balance;
+  }
+
+  h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin: 24px 0 8px;
+  }
+
+  p { margin: 0 0 14px; max-width: var(--measure); text-wrap: pretty; }
+
+  a { color: var(--cedar); }
+
+  strong { font-weight: 600; }
+
+  em { font-style: normal; background: var(--cedar-soft); padding: 0 3px; border-radius: 2px; }
+
+  ul, ol.body-list {
+    max-width: var(--measure);
+    margin: 0 0 16px;
+    padding-left: 1.15em;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  li::marker { color: var(--cedar); }
+
+  .lede {
+    font-family: var(--display);
+    font-size: 1.13rem;
+    line-height: 1.66;
+    color: var(--ink-mid);
+    max-width: 40em;
+    margin-bottom: 22px;
+  }
+
+  /* ---------- verdict cards (exec summary) ---------- */
+
+  .verdicts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-bottom: 8px;
+  }
+
+  .verdict {
+    background: var(--surface);
+    padding: 20px 20px 18px;
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    gap: 14px;
+  }
+
+  .verdict-n {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--signal);
+    padding-top: 4px;
+  }
+
+  .verdict h3 { margin: 0 0 6px; font-size: 1.05rem; }
+  .verdict p { margin: 0; font-size: 14.2px; color: var(--ink-mid); max-width: none; }
+
+  /* ---------- callout ---------- */
+
+  .callout {
+    background: var(--signal-soft);
+    border-left: 3px solid var(--signal);
+    padding: 18px 20px;
+    margin: 22px 0;
+    max-width: var(--measure);
+  }
+
+  .callout h4 { color: var(--signal); margin-top: 0; }
+  .callout p:last-child, .callout ul:last-child { margin-bottom: 0; }
+
+  .callout.calm {
+    background: var(--cedar-soft);
+    border-left-color: var(--cedar);
+  }
+  .callout.calm h4 { color: var(--cedar); }
+
+  /* ---------- funnel ---------- */
+
+  .funnel {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    padding: 22px 22px 18px;
+    margin: 22px 0;
+    max-width: var(--measure);
+  }
+
+  .funnel-row {
+    display: grid;
+    grid-template-columns: 108px minmax(0, 1fr) 78px;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .funnel-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--ink-mute);
+    text-align: right;
+  }
+
+  .funnel-track { background: var(--surface-sunk); height: 26px; }
+
+  .funnel-bar { background: var(--cedar); height: 26px; }
+
+  .funnel-val {
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+  }
+
+  .funnel-out {
+    border-top: 1px solid var(--rule);
+    margin-top: 16px;
+    padding-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 12px;
+  }
+
+  .funnel-out .big {
+    font-family: var(--mono);
+    font-size: clamp(1.9rem, 6vw, 2.5rem);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+    color: var(--signal);
+    line-height: 1;
+  }
+
+  .funnel-out .cap {
+    font-family: var(--display);
+    font-size: 1.02rem;
+    color: var(--ink-mid);
+  }
+
+  .fig-note {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    color: var(--ink-mute);
+    margin: 10px 0 0;
+    max-width: none;
+  }
+
+  /* ---------- tables ---------- */
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 20px 0;
+    border: 1px solid var(--rule);
+    background: var(--surface);
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 520px;
+    font-size: 13.8px;
+  }
+
+  th {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: left;
+    color: var(--ink-mute);
+    background: var(--surface-sunk);
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: bottom;
+  }
+
+  td {
+    padding: 13px 14px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+
+  td.tier { font-family: var(--mono); font-weight: 600; white-space: nowrap; color: var(--cedar); }
+  td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  .yes { color: var(--cedar); font-weight: 600; }
+  .no { color: var(--signal); font-weight: 600; }
+
+  /* ---------- phases ---------- */
+
+  .phase {
+    border-top: 1px solid var(--rule-strong);
+    padding-top: 18px;
+    margin-top: 26px;
+  }
+
+  .phase-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px 16px;
+    margin-bottom: 4px;
+  }
+
+  .phase-dates {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--signal);
+    white-space: nowrap;
+  }
+
+  .phase-head h3 { margin: 0; font-size: 1.22rem; }
+
+  .phase-goal {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--ink-mute);
+    margin: 0 0 14px;
+    max-width: none;
+  }
+
+  .kill {
+    background: var(--surface);
+    border: 1px dashed var(--signal);
+    padding: 13px 16px;
+    margin-top: 14px;
+    max-width: var(--measure);
+  }
+
+  .kill h4 { margin: 0 0 5px; color: var(--signal); }
+  .kill p { margin: 0; font-size: 13.8px; color: var(--ink-mid); max-width: none; }
+
+  /* ---------- screens (mvp mock) ---------- */
+
+  .screens {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+    gap: 12px;
+    margin: 22px 0;
+  }
+
+  .screen {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .screen-n {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--ink-mute);
+  }
+
+  .screen strong { font-size: 14px; display: block; }
+
+  .screen-body {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    line-height: 1.72;
+    color: var(--ink-mid);
+    white-space: pre-line;
+  }
+
+  /* ---------- metric strip ---------- */
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 20px 0;
+  }
+
+  .metric { background: var(--surface); padding: 15px 16px; }
+
+  .metric .m-val {
+    font-family: var(--mono);
+    font-size: 1.42rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+    color: var(--cedar);
+    display: block;
+    line-height: 1.2;
+  }
+
+  .metric .m-key {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    display: block;
+    margin-top: 5px;
+  }
+
+  .metric .m-note {
+    font-size: 12.4px;
+    color: var(--ink-mid);
+    display: block;
+    margin-top: 7px;
+    line-height: 1.55;
+  }
+
+  /* ---------- checklist ---------- */
+
+  .checklist {
+    list-style: none;
+    padding: 0;
+    margin: 18px 0 0;
+    max-width: var(--measure);
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .checklist li {
+    background: var(--surface);
+    padding: 13px 16px;
+    display: grid;
+    grid-template-columns: 62px 1fr;
+    gap: 12px;
+    align-items: baseline;
+  }
+
+  .checklist .day {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    color: var(--signal);
+    white-space: nowrap;
+  }
+
+  /* ---------- verify tag ---------- */
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--signal);
+    border: 1px solid var(--signal);
+    border-radius: 2px;
+    padding: 1px 4px;
+    white-space: nowrap;
+    vertical-align: 1.5px;
+    margin-left: 3px;
+  }
+
+  /* ---------- closing ---------- */
+
+  .closing {
+    margin-top: 54px;
+    padding-top: 26px;
+    border-top: 1.5px solid var(--ink);
+  }
+
+  .closing p {
+    font-family: var(--display);
+    font-size: 1.16rem;
+    line-height: 1.66;
+    max-width: 36em;
+  }
+
+  :focus-visible { outline: 2px solid var(--cedar); outline-offset: 2px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+
+  @media (max-width: 460px) {
+    .funnel-row { grid-template-columns: 84px minmax(0, 1fr) 62px; gap: 8px; }
+    .funnel-label { font-size: 10px; }
+    .verdict { grid-template-columns: 24px 1fr; gap: 10px; padding: 17px 15px; }
+    .checklist li { grid-template-columns: 1fr; gap: 3px; }
+  }
+</style>
+
+<div class="shell">
+
+  <header class="masthead">
+    <p class="kicker">Founder Plan · v1 · 2026.09.14</p>
+    <h1>Make helping<br>each other effortless.</h1>
+    <p class="standfirst">
+      Voluntinder は「ボランティア掲示板アプリ」ではなく、人の余剰時間と善意を、地域の必要な場所へ流すためのインフラ。
+      ただし、最初に証明すべきことは1つだけです。
+    </p>
+    <div class="masthead-meta">
+      <span>BEACHHEAD — VANCOUVER, BC</span>
+      <span>NORTH STAR — HOURS OF HELP CREATED</span>
+      <span>VALIDATION — 90 DAYS TO 2026.12.13</span>
+    </div>
+  </header>
+
+  <div class="frame">
+
+    <nav class="rail" aria-label="目次">
+      <p class="rail-heading">Contents</p>
+      <ol>
+        <li><a href="#s1"><span>01</span><span>結論と修正点</span></a></li>
+        <li><a href="#s2"><span>02</span><span>Vision</span></a></li>
+        <li><a href="#s3"><span>03</span><span>North Star</span></a></li>
+        <li><a href="#s4"><span>04</span><span>検証すべき仮説</span></a></li>
+        <li><a href="#s5"><span>05</span><span>摩擦のパラドックス</span></a></li>
+        <li><a href="#s6"><span>06</span><span>Trust Tier</span></a></li>
+        <li><a href="#s7"><span>07</span><span>Target User</span></a></li>
+        <li><a href="#s8"><span>08</span><span>Competitors</span></a></li>
+        <li><a href="#s9"><span>09</span><span>MVP</span></a></li>
+        <li><a href="#s10"><span>10</span><span>Business Model</span></a></li>
+        <li><a href="#s11"><span>11</span><span>90-Day Plan</span></a></li>
+        <li><a href="#s12"><span>12</span><span>1年ロードマップ</span></a></li>
+        <li><a href="#s13"><span>13</span><span>Risks</span></a></li>
+        <li><a href="#s14"><span>14</span><span>次の7日間</span></a></li>
+      </ol>
+      <p class="rail-note">
+        <strong>720 hrs</strong>
+        1,000人から生まれる助け合いの時間。この1つの数字だけを増やす。
+      </p>
+    </nav>
+
+    <main class="col">
+
+      <!-- 01 -->
+      <section id="s1">
+        <div class="sec-head">
+          <span class="sec-num">01</span>
+          <h2>結論と、いま直すべき5点</h2>
+        </div>
+
+        <p class="lede">
+          あなたの整理には、ほぼ全面的に同意します。壮大なVisionと最初のプロダクトを分ける判断、
+          Concierge MVP を先に人力で回す判断、North Star を「時間」に置く判断は、どれも正しい。
+          その上で、このまま実行すると確実に詰まる点が5つあります。
+        </p>
+
+        <div class="verdicts">
+          <div class="verdict">
+            <span class="verdict-n">01</span>
+            <div>
+              <h3>季節が逆。10〜12月のバンクーバーで屋外活動は戦えない</h3>
+              <p>
+                ビーチ清掃を主戦場に据えると、検証期間はまるごと雨季に当たります。
+                一方で11〜12月は屋内チャリティの需要が年間ピーク（フードハンパー、トイドライブ、ホリデーディナー、シェルター）。
+                カテゴリを屋外から「ホリデー期の屋内活動」に差し替えるだけで、90日計画は年で最も供給が厚い季節に着地します。
+              </p>
+            </div>
+          </div>
+          <div class="verdict">
+            <span class="verdict-n">02</span>
+            <div>
+              <h3>摩擦を減らすと、無断欠席が増える</h3>
+              <p>
+                これがこのプロダクト最大の構造的リスクです。Tinderのように簡単に参加できるなら、Tinderのように簡単に消える。
+                NPOにとって最悪なのは応募ゼロではなく、8人来る前提で準備して3人しか来ないこと。
+                「参加を簡単にする」のではなく「<em>キャンセルを簡単にする</em>」のが正解です（05章）。
+              </p>
+            </div>
+          </div>
+          <div class="verdict">
+            <span class="verdict-n">03</span>
+            <div>
+              <h3>全カテゴリは最初から扱えない。法律が許さない</h3>
+              <p>
+                子ども・高齢者・医療に関わる活動は、BC州では犯罪経歴チェックとオリエンテーションが前提です<span class="tag">要確認</span>。
+                スワイプ即参加はここでは成立しません。最初は「誰でも今すぐ参加できる」Tier 0 に絞る。
+                これは制約ではなく、スコープを決めてくれる贈り物です（06章）。
+              </p>
+            </div>
+          </div>
+          <div class="verdict">
+            <span class="verdict-n">04</span>
+            <div>
+              <h3>最初のユーザーは「善意の一般市民」ではない</h3>
+              <p>
+                医学部・看護学部・歯学部を目指す学生は、出願に記録されたボランティア時間を必要とします<span class="tag">要確認</span>。
+                動機が最も強く、週末が空いていて、スマホネイティブで、大学に物理的に密集している。
+                純粋な無償の愛という思想とは少しズレますが、最初の燃料としてこれ以上の層はいません（07章）。
+              </p>
+            </div>
+          </div>
+          <div class="verdict">
+            <span class="verdict-n">05</span>
+            <div>
+              <h3>名前に金を使うのは、まだ早い</h3>
+              <p>
+                Match Group は "Tinder" を含む・想起させる商標に対してかなり攻撃的です<span class="tag">要確認</span>。
+                検証段階のコードネームとしては全く問題ありませんが、ロゴ制作・ドメイン一括取得・法人設立の前に、
+                代替名を1つ用意し、弁理士に30分だけ相談しておくこと。コストはほぼゼロ、回避できるリスクは大きい。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 -->
+      <section id="s2">
+        <div class="sec-head">
+          <span class="sec-num">02</span>
+          <h2>Vision と Mission</h2>
+        </div>
+
+        <h4>Vision — 10年後の世界</h4>
+        <p>
+          AIが生存のための労働を引き受けた世界で、人は「報酬のため」ではなく「誰かを助けたい」「社会に参加したい」という動機で
+          つながっている。時間が余ることは不安ではなく、社会に参加する余地になっている。
+        </p>
+
+        <h4>Mission — 会社がやること</h4>
+        <p style="font-family: var(--display); font-size: 1.5rem; line-height: 1.4; color: var(--cedar); margin: 4px 0 18px;">
+          Make helping each other effortless.
+        </p>
+        <p>
+          社会に存在する「Help Needed」と、人間の「I Can Help」をつなぐ。
+          Voluntinder はその最初のプロダクトであって、会社の定義ではありません。
+          最終形は Volunteer Board ではなく <strong>Help Network</strong>
+          ——高齢者の30分の家具移動も、洪水被害の200人も、同じ1つのネットワークに乗る。
+        </p>
+
+        <div class="callout calm">
+          <h4>ここを混ぜないこと</h4>
+          <p>
+            Vision は投資家と仲間を動かすためのもの。最初のプロダクトは1つの仮説を殺すためのもの。
+            この2つを同じ会議で語ると、必ず「AIレコメンド」「ポイント経済圏」「世界展開」が最初のスプリントに紛れ込みます。
+            今後90日、Visionはピッチの場だけで使ってください。
+          </p>
+        </div>
+      </section>
+
+      <!-- 03 -->
+      <section id="s3">
+        <div class="sec-head">
+          <span class="sec-num">03</span>
+          <h2>North Star — Hours of Help Created</h2>
+        </div>
+
+        <p>
+          ユーザー数でも掲載件数でもなく、<strong>このサービスによって生まれた「人が人を助けた時間」</strong>を唯一の目的数値にする。
+          この選択は正しい。ユーザー数は虚栄の指標になり、掲載件数は供給側の努力しか測らないが、
+          Hours of Help Created は「実際に人が現場に立った」ときにしか増えません。
+        </p>
+
+        <div class="funnel">
+          <div class="funnel-row">
+            <span class="funnel-label">USERS</span>
+            <div class="funnel-track"><div class="funnel-bar" style="width: 100%;"></div></div>
+            <span class="funnel-val">1,000</span>
+          </div>
+          <div class="funnel-row">
+            <span class="funnel-label">MATCHES 43%</span>
+            <div class="funnel-track"><div class="funnel-bar" style="width: 43%;"></div></div>
+            <span class="funnel-val">430</span>
+          </div>
+          <div class="funnel-row">
+            <span class="funnel-label">ATTENDED 65%</span>
+            <div class="funnel-track"><div class="funnel-bar" style="width: 28%;"></div></div>
+            <span class="funnel-val">280</span>
+          </div>
+          <div class="funnel-out">
+            <span class="big">720</span>
+            <span class="cap">hours of human help created.</span>
+          </div>
+          <p class="fig-note">例示モデル。280回の参加 × 平均2.6時間。実測ではなく、いま検証しようとしている形。</p>
+        </div>
+
+        <p>
+          ただし North Star は<strong>遅行指標</strong>です。日々の意思決定はこれでは下せない。
+          90日間、実際に毎週見るのは次の3つに絞ってください。
+        </p>
+
+        <div class="metrics">
+          <div class="metric">
+            <span class="m-val">≥ 80%</span>
+            <span class="m-key">Filled Shift Rate</span>
+            <span class="m-note">NPOが出した募集のうち、定員が埋まった割合。NPOがあなたを愛する理由はこれ1つ。</span>
+          </div>
+          <div class="metric">
+            <span class="m-val">≥ 75%</span>
+            <span class="m-key">Show-Up Rate</span>
+            <span class="m-note">「参加する」と答えた人のうち、実際に現場に来た割合。ここが崩れると供給が離れる。</span>
+          </div>
+          <div class="metric">
+            <span class="m-val">≥ 25%</span>
+            <span class="m-key">Repeat Rate / 60d</span>
+            <span class="m-note">1回参加した人が60日以内に2回目をやる割合。事業が複利になるかどうかの唯一の証拠。</span>
+          </div>
+        </div>
+
+        <p>
+          100人がインストールして1回だけやるサービスより、20人が毎月使うサービスの方がはるかに強い、というあなたの指摘は正しい。
+          その主張を数字にしたのが3つ目の Repeat Rate です。
+        </p>
+      </section>
+
+      <!-- 04 -->
+      <section id="s4">
+        <div class="sec-head">
+          <span class="sec-num">04</span>
+          <h2>検証すべき仮説を、反証可能な形にする</h2>
+        </div>
+
+        <p>
+          「ボランティアに興味はあるが、探すのが面倒・予定が合わない・申込のハードルが高いせいで参加していない人が相当数いる」
+          ——この仮説は正しい方向ですが、このままでは反証できません。3つに割ります。
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 52px;">仮説</th>
+                <th>内容</th>
+                <th style="width: 30%;">これが偽なら</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tier">H1<br>欲求</td>
+                <td>ボランティアをやりたい気持ちは既に存在していて、供給されていないだけである。</td>
+                <td>UIをどれだけ良くしても伸びない。<span class="no">事業を畳む。</span></td>
+              </tr>
+              <tr>
+                <td class="tier">H2<br>摩擦</td>
+                <td>参加を妨げているのは「探す・予定を合わせる・申し込む」の摩擦であり、それを取り除けば参加する。</td>
+                <td>問題は発見ではなく動機。<span class="no">プロダクトの形を変える。</span></td>
+              </tr>
+              <tr>
+                <td class="tier">H3<br>定着</td>
+                <td>1回参加した人は、良い体験をすれば自発的に2回目をやる。</td>
+                <td>一過性のチャリティツール。<span class="no">複利が効かず、事業にならない。</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          <h4>インタビューで絶対に聞いてはいけない質問</h4>
+          <p>
+            「ボランティアしたいですか？」——全員がYesと答えるので、情報量はゼロです。あなたの指摘通り。
+            代わりに、<strong>過去の具体的な行動</strong>だけを聞いてください。
+          </p>
+          <ul>
+            <li>「最後に<strong>ボランティアをやろうと思った</strong>のはいつですか。何がきっかけでしたか」</li>
+            <li>「そのとき、実際には何をしましたか。検索しましたか。どのサイトを開きましたか」</li>
+            <li>「参加しなかったとして、<strong>どの瞬間に</strong>やめましたか。フォームですか、日程ですか、返信待ちですか」</li>
+            <li>「代わりにその土曜日、何をしていましたか」</li>
+          </ul>
+          <p style="margin-top:12px;">
+            最後の質問が一番効きます。競合は VolunteerMatch ではなく、<strong>その人の土曜日の午後</strong>です。
+          </p>
+        </div>
+      </section>
+
+      <!-- 05 -->
+      <section id="s5">
+        <div class="sec-head">
+          <span class="sec-num">05</span>
+          <h2>摩擦のパラドックス</h2>
+        </div>
+
+        <p class="lede">
+          このプロダクトで最も見落とされやすく、最も致命的な力学です。
+          参加の摩擦を下げると参加宣言は増えますが、<strong>1件あたりの参加宣言の重みは軽くなります。</strong>
+        </p>
+
+        <p>
+          いまのボランティア申込フォームは苦痛ですが、あの苦痛には機能があります。
+          15分かけてフォームを埋めた人は当日来る。スワイプ1回で参加した人は、来ないかもしれない。
+          Tinderのマッチが会わずに終わっても誰も困りませんが、Voluntinder で8人分の軍手と昼食を用意したNPOは実害を受けます。
+          そして一度裏切られたNPOは、二度と募集を出しません。<strong>供給が死ぬ経路はここです。</strong>
+        </p>
+
+        <h3>解決は「参加を重くする」ことではない</h3>
+        <p>
+          摩擦を戻したら元の木阿弥です。代わりに、参加宣言そのものは軽いまま、
+          <strong>離脱の経路を整備する</strong>ことで NPO を守ります。設計上の4つの打ち手：
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 24%;">打ち手</th>
+                <th>中身</th>
+                <th style="width: 28%;">効く理由</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>ワンタップ・キャンセル</strong></td>
+                <td>参加確定画面と全リマインダーに、常にキャンセルボタンを置く。理由入力は求めない。責める文言も出さない。</td>
+                <td>人は「気まずいから連絡しない」。気まずさを消せば、無断欠席は事前キャンセルに変わり、NPOは補充できる。</td>
+              </tr>
+              <tr>
+                <td><strong>24時間前の再確認</strong></td>
+                <td>前日に「まだ行けますか？」を1通。返信がなければ枠を解放し、待機者に回す。</td>
+                <td>沈黙をNPOのリスクにしない。承諾を1回更新させることで、心理的コミットメントも上がる。</td>
+              </tr>
+              <tr>
+                <td><strong>あと何人、が見える</strong></td>
+                <td>「あと3人必要です」「5人が参加予定」を常時表示。抽象的な組織ではなく、具体的な人数に対して約束させる。</td>
+                <td>約束の相手が組織ではなく人になると、ドタキャン率は下がる。社会的証明と責任が同時に働く。</td>
+              </tr>
+              <tr>
+                <td><strong>参加率を持ち歩く</strong></td>
+                <td>プロフィールに参加回数と時間を蓄積。事前キャンセルは減点しない。無断欠席だけが記録に残る。</td>
+                <td>報酬ではなくアイデンティティで動機づける。あなたの「ポイントを金銭の代替にしない」原則とも整合する。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          <h4>この章がそのまま Concierge MVP の実験になる</h4>
+          <p>
+            人力マッチングの段階で、Show-Up Rate を必ず測ってください。ここが 60% を切るなら、
+            問題は「発見」ではなく「コミットメント」です。その場合アプリを作ると事態は悪化します——
+            摩擦をさらに下げることになるからです。プロダクトの形自体を考え直す分岐点になります。
+          </p>
+        </div>
+      </section>
+
+      <!-- 06 -->
+      <section id="s6">
+        <div class="sec-head">
+          <span class="sec-num">06</span>
+          <h2>Trust Tier — スワイプで参加できる活動は一部しかない</h2>
+        </div>
+
+        <p>
+          ボランティア機会は均質ではありません。参加までに必要な信頼の量で3層に分かれ、
+          <strong>Tier 0 だけがスワイプ即参加と両立します。</strong>
+          プロトタイプに「子ども」「福祉」カテゴリを入れていますが、これは法的・運用的に成立しません。最初の版から外します。
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 74px;">Tier</th>
+                <th style="width: 26%;">活動例</th>
+                <th>参加前に必要なもの</th>
+                <th style="width: 15%;">MVP</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tier">Tier 0<br>即参加</td>
+                <td>フードバンクの仕分け、ホリデーハンパー梱包、イベント設営・受付、公園/ビーチ清掃、炊き出しの配膳補助</td>
+                <td>なし。名前と当日来ることだけ。現場で5分の説明。</td>
+                <td><span class="yes">対象</span></td>
+              </tr>
+              <tr>
+                <td class="tier">Tier 1<br>要研修</td>
+                <td>フードバンクの受付、シェルターの調理、動物シェルターの世話</td>
+                <td>1〜2時間のオリエンテーション、簡単な安全講習。</td>
+                <td>v0.2以降</td>
+              </tr>
+              <tr>
+                <td class="tier">Tier 2<br>要審査</td>
+                <td>子ども関連、高齢者の個別訪問、障害者支援、医療、メンタリング</td>
+                <td>犯罪経歴チェック、面接、リファレンス、継続コミット<span class="tag">要確認</span></td>
+                <td><span class="no">対象外</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          この分割には、スコープを切る以上の意味があります。
+          <strong>Tier 0 は、NPOが最も埋めるのに困っている層でもある。</strong>
+          Tier 2 の継続ボランティアは既存の熱心な支援者で回っていますが、
+          「今週土曜に8人」という単発の頭数は、既存のメーリングリストでは埋まりません。
+          あなたが解ける問題と、NPOが金を払ってでも解きたい問題が、ちょうどここで重なります。
+        </p>
+      </section>
+
+      <!-- 07 -->
+      <section id="s7">
+        <div class="sec-head">
+          <span class="sec-num">07</span>
+          <h2>Target User — 最初の1,000人をどこから取るか</h2>
+        </div>
+
+        <h3>Beachhead：UBC / SFU の医療系志望学生</h3>
+        <p>
+          「バンクーバー × 学生 × 週末」まで絞る判断は正しい。もう一段絞れます。
+          医学部・看護学部・歯学部・薬学部を目指す学部生は、出願時に記録されたボランティア経験を必要とします<span class="tag">要確認</span>。
+          彼らは、動機が構造的に強く、時間があり、大学という半径2kmに数千人単位で密集し、
+          そして<strong>「時間の証明」という、あなたが自然に提供できるものを欲しがっている</strong>。
+        </p>
+
+        <p>
+          思想とのズレは認めるべきです。彼らの動機は純粋な無償の愛ではない。
+          しかしこれは矛盾ではなく<strong>点火剤</strong>です。実際に現場に立った人間の一定割合は、
+          出願が終わったあとも続けます。その転換率こそが、あなたのVisionが正しいかどうかの最初の実証データになります。
+        </p>
+
+        <h3>第2波：新移民・国際学生</h3>
+        <p>
+          バンクーバーに来て間もない人にとって、ボランティアは
+          「英語を使う場」「カナダでの職歴」「知り合いを作る手段」を同時に満たします。
+          孤独の解消という動機は、履歴書という動機より長続きします。
+          日本人コミュニティを持つあなたにとって、最も距離が近い層でもある。
+        </p>
+
+        <h3>供給側：小規模NPOの、単発の頭数不足</h3>
+        <p>
+          大手NPOは自前のボランティア管理システムと待機リストを持っているので、あなたを必要としません。
+          狙うのは職員5〜20人規模、専任のボランティアコーディネーターがいない団体。
+          彼らのコーディネーターは兼任で、募集はメールとFacebookで、毎回埋まらずに困っています。
+          最初の10団体は<strong>ここからしか取れません。</strong>
+        </p>
+
+        <div class="callout calm">
+          <h4>供給獲得の殺し文句</h4>
+          <p>
+            「ボランティアを見つけます」では響きません。どのプラットフォームも同じことを言っているからです。
+            言うべきはこうです——<strong>「来週土曜の8人、私が責任を持って埋めます。手数料はいりません。
+            埋まらなかったら私が行きます。」</strong>
+            最初の10団体は、プロダクトではなくこの約束で獲得してください。
+          </p>
+        </div>
+      </section>
+
+      <!-- 08 -->
+      <section id="s8">
+        <div class="sec-head">
+          <span class="sec-num">08</span>
+          <h2>Competitors — 全員が同じ間違いをしている</h2>
+        </div>
+
+        <p>
+          この領域には既に多くのプレイヤーがいます。にもかかわらず問題が解決していないのは、
+          <strong>全員が「検索できるディレクトリ」を作り、団体側の掲載体験を最適化してきたから</strong>です。
+          誰も「参加宣言 → 実際に現場に立つ」の変換率を最適化していません。そこが空いています。
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 25%;">プレイヤー</th>
+                <th>形</th>
+                <th style="width: 33%;">空いている隙間</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Volunteer Connector / GoVolunteer.ca</strong><span class="tag">要確認</span></td>
+                <td>BC州のボランティア掲載ディレクトリ。検索とフィルタ。無料掲載。</td>
+                <td>供給の在庫はここにある。UXは検索前提で、当日枠や締切間近の枠を可視化しない。</td>
+              </tr>
+              <tr>
+                <td><strong>VolunteerMatch / Idealist</strong></td>
+                <td>北米最大級の掲載プラットフォーム。網羅性が武器。</td>
+                <td>網羅性は発見の敵。選択肢が多すぎて決められない。ローカル性が薄い。</td>
+              </tr>
+              <tr>
+                <td><strong>CharityVillage</strong></td>
+                <td>カナダの非営利求人＋ボランティア。就職寄り。</td>
+                <td>「土曜の午後3時間」という粒度を扱っていない。</td>
+              </tr>
+              <tr>
+                <td><strong>Meetup / Facebook Groups / Eventbrite</strong></td>
+                <td>実際に人が週末の予定を決めている場所。</td>
+                <td>ボランティア専用ではないが、<strong>行動としては最大の競合</strong>。ここのUXの軽さが基準線になる。</td>
+              </tr>
+              <tr>
+                <td><strong>Benevity 等の企業CSRツール</strong></td>
+                <td>企業が従業員向けに導入。B2B、単価が高い。</td>
+                <td>買い手が企業。個人には届かない。将来の収益モデルとしての参照先（10章）。</td>
+              </tr>
+              <tr>
+                <td><strong>何もしない土曜日</strong></td>
+                <td>本命の競合。摩擦ゼロ、コストゼロ、常に利用可能。</td>
+                <td>これに勝てる設計だけが生き残る。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          スワイプUIは差別化になりません。過去にも「ボランティア版Tinder」は複数試みられ、定着していないはずです<span class="tag">要リサーチ</span>。
+          Day 1〜15で、失敗事例を3件は必ず調べてください。
+          <strong>堀になるのは、スワイプではなく Filled Shift Rate です。</strong>
+          「Voluntinderに出せば埋まる」という評判が地域のNPOの間に立った瞬間、供給が自走を始めます。
+        </p>
+      </section>
+
+      <!-- 09 -->
+      <section id="s9">
+        <div class="sec-head">
+          <span class="sec-num">09</span>
+          <h2>MVP — 2段階で作る</h2>
+        </div>
+
+        <h3>Stage 1：Concierge MVP（コードを1行も書かない）</h3>
+        <p>
+          あなたの提案通り、最初の30人はあなた自身が手作業でマッチングします。
+          必要なのは Google Form、スプレッドシート1枚、そしてWhatsApp / LINE / Instagram DM だけ。
+          ここで成立しないものは、アプリにしても成立しません。逆にここで成立すれば、
+          <strong>Voluntinderは既に存在しています。アプリはそれを自動化するだけ。</strong>
+        </p>
+
+        <ul>
+          <li><strong>登録フォーム（需要側）</strong>——名前、連絡先、住んでいるエリア、空いている曜日と時間帯、移動できる距離、興味カテゴリ、1回に出せる最大時間。設問は7つまで。</li>
+          <li><strong>団体シート（供給側）</strong>——団体名、活動名、日時、場所、必要人数、Tier、当日の担当者連絡先。</li>
+          <li><strong>マッチング</strong>——曜日と場所で手で絞り、該当者に個別メッセージ。一斉送信はしない。1対1のメッセージであることが Show-Up Rate を支えます。</li>
+          <li><strong>出欠確認</strong>——当日、団体の担当者に「何人来ましたか」を必ず聞く。この1つの数字が、この90日で最も価値のあるデータです。</li>
+        </ul>
+
+        <h3>Stage 2：Voluntinder v0.1（5画面、それ以上作らない）</h3>
+
+        <div class="screens">
+          <div class="screen">
+            <span class="screen-n">01 · OPPORTUNITY</span>
+            <strong>Beach Cleanup</strong>
+            <span class="screen-body">English Bay
+Sep 20 · 10:00–12:00
+Need 8 · 3 joined
+2.1 km away</span>
+          </div>
+          <div class="screen">
+            <span class="screen-n">02 · SWIPE</span>
+            <strong>参加 / スキップ</strong>
+            <span class="screen-body">→ Join
+← Skip
+
+タップで詳細</span>
+          </div>
+          <div class="screen">
+            <span class="screen-n">03 · CONFIRM</span>
+            <strong>You're in.</strong>
+            <span class="screen-body">Sat 10:00
+English Bay
+持ち物：なし
+
+Cancel anytime</span>
+          </div>
+          <div class="screen">
+            <span class="screen-n">04 · ATTENDANCE</span>
+            <strong>行けましたか？</strong>
+            <span class="screen-body">YES / NO
+
+団体側も同じ質問に
+回答して突合する</span>
+          </div>
+          <div class="screen">
+            <span class="screen-n">05 · PROFILE</span>
+            <strong>Kento</strong>
+            <span class="screen-body">4 activities
+11 hours
+2 organizations</span>
+          </div>
+        </div>
+
+        <p>
+          機能はこれで全部です。チャット、フォロー、コメント、写真投稿、通知設定、検索、地図——全部作らない。
+          <strong>ログイン / Opportunity / Swipe / Join / Attendance / Profile</strong>。以上。
+        </p>
+
+        <h4>技術選択</h4>
+        <p>
+          最初からSwiftで巨大なiOSアプリを作る必要はない、という判断に同意します。
+          <strong>Expo（React Native）＋ Supabase</strong> を推します。
+          Web版とiOS/Android版を1つのコードベースで出せて、認証・DB・リアルタイム更新・ストレージがSupabase側で完結し、
+          あなたは既にReact/TypeScriptのプロトタイプを書いているので、そのコンポーネント設計をほぼそのまま移せます。
+          データモデルは <span style="font-family: var(--mono); font-size: 13px;">users / organizations / opportunities / shifts / signups / attendances</span> の6テーブルで足ります。
+        </p>
+
+        <div class="callout calm">
+          <h4>いま手元にあるプロトタイプの正しい使い道</h4>
+          <p>
+            すでに動くスワイプアプリがありますが、これを一般ユーザーに配るのはまだ早い。
+            <strong>NPOへの営業ツールとして使ってください。</strong>
+            「こういうものを作っています」と画面を見せられる founder は、口頭で説明する founder より遥かに信用されます。
+            Concierge MVP の10団体を口説くための道具として、これは既に十分な価値があります。
+          </p>
+        </div>
+      </section>
+
+      <!-- 10 -->
+      <section id="s10">
+        <div class="sec-head">
+          <span class="sec-num">10</span>
+          <h2>Business Model</h2>
+        </div>
+
+        <p>
+          大原則を先に固定します。<strong>ボランティア個人からは、永久に課金しない。
+          そして、ボランティアに金銭的報酬を渡さない。</strong>
+          100時間でギフト券、をやった瞬間に「報酬のために働く」世界に戻り、Vision が死にます。
+          報酬は、実績・感謝・コミュニティ・Impact・アイデンティティで払う。
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 18%;">時期</th>
+                <th style="width: 27%;">収益源</th>
+                <th>中身と注意点</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="num">0–18 か月</td>
+                <td><strong>収益なし／助成金</strong></td>
+                <td>Vancouver Foundation、BC Community Gaming Grants、連邦の若者向けプログラム、大学の起業支援<span class="tag">要確認</span>。この段階で収益化を急ぐと、供給側との信頼構築が全部壊れます。</td>
+              </tr>
+              <tr>
+                <td class="num">18–36 か月</td>
+                <td><strong>自治体・公共</strong></td>
+                <td>市やパークボードはイベント運営に人手を必要とし、かつ<strong>予算を持っています</strong>。小規模NPOには払う金がない。最初の実売り先はここ。</td>
+              </tr>
+              <tr>
+                <td class="num">24–48 か月</td>
+                <td><strong>企業のチームボランティア</strong></td>
+                <td>実際に金が動いているのはこの領域（Benevity等が先行）。「社員30人で土曜に活動したい」を1クリックで手配し、レポートを出す。従業員数課金。</td>
+              </tr>
+              <tr>
+                <td class="num">36 か月〜</td>
+                <td><strong>検証済み時間の証明</strong></td>
+                <td>団体側が承認した参加時間は、自己申告と違って<strong>信用に値する記録</strong>になります。進学・出願・資格・移民手続で使える証明レイヤー。07章の beachhead が、そのまま最初の顧客になる。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          4番目が最も Vision と整合します。人が助け合った時間を計測するインフラを持っている、という一点から
+          自然に生まれる収益であって、善意を商品化するものではないからです。
+        </p>
+      </section>
+
+      <!-- 11 -->
+      <section id="s11">
+        <div class="sec-head">
+          <span class="sec-num">11</span>
+          <h2>90日検証計画</h2>
+        </div>
+
+        <p class="lede">
+          Day 1 は 2026年9月15日、Day 90 は 12月13日。
+          各フェーズに<strong>撤退・方針転換の閾値</strong>を先に決めておきます。これを事前に書いておかないと、
+          人は必ず「あと少し」で半年を溶かします。
+        </p>
+
+        <div class="phase">
+          <div class="phase-head">
+            <span class="phase-dates">DAY 1–15 · SEP 15 – SEP 29</span>
+            <h3>Problem Discovery</h3>
+          </div>
+          <p class="phase-goal">目的：H1（欲求は既に存在する）の真偽を、40人の過去の行動から判定する。</p>
+          <ul>
+            <li>ボランティア経験者 10人／興味はあるが未参加 20人／NPO・団体 10人にインタビュー。1件20分。</li>
+            <li>未参加20人には04章の質問セットのみを使う。「やりたいか」は聞かない。</li>
+            <li>NPO側には「直近3か月で、人が集まらず縮小・中止した活動」を具体的に挙げてもらう。</li>
+            <li>並行して、バンクーバーの Tier 0 活動を30件リストアップし、供給の実在量を把握する。</li>
+            <li>過去のボランティア系スワイプアプリの失敗事例を3件調査する。</li>
+          </ul>
+          <div class="kill">
+            <h4>Kill Criteria</h4>
+            <p>未参加20人のうち、<strong>「やろうと思ったのに、しなかった」具体的な瞬間を語れる人が12人未満</strong>なら、問題は摩擦ではなく欲求です。プロダクトを作らず、仮説を組み直してください。</p>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div class="phase-head">
+            <span class="phase-dates">DAY 16–45 · SEP 30 – OCT 29</span>
+            <h3>Concierge MVP — 人力の Voluntinder</h3>
+          </div>
+          <p class="phase-goal">目的：H2（摩擦を取り除けば参加する）を、実際の参加者数で判定する。</p>
+          <ul>
+            <li>需要側 100人の登録。UBC/SFUのキャンパス、学部のFacebookグループ、日本人コミュニティ、Instagram。</li>
+            <li>供給側 10団体、Tier 0 の活動 20件。07章の殺し文句をそのまま使う。</li>
+            <li>マッチングは全て手作業・1対1のメッセージ。30回の実参加を目標にする。</li>
+            <li>毎回、団体担当者から実出席人数を取る。<strong>これを取らない回を1つも作らない。</strong></li>
+          </ul>
+          <div class="kill">
+            <h4>Kill Criteria</h4>
+            <p>条件の合う近所の活動を個別に案内して、<strong>「参加する」の返答が40%未満</strong>なら、摩擦は主因ではありません。／ 参加すると答えた人の<strong>実出席が60%未満</strong>なら、05章の分岐です。アプリ化は状況を悪化させます。</p>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div class="phase-head">
+            <span class="phase-dates">DAY 46–75 · OCT 30 – NOV 28</span>
+            <h3>Voluntinder v0.1 を作る</h3>
+          </div>
+          <p class="phase-goal">目的：手作業で成立した流れだけを、そのまま自動化する。新機能は足さない。</p>
+          <ul>
+            <li>09章の5画面。Expo + Supabase。4週間で出す。伸びたら機能を削る。</li>
+            <li>Concierge の参加者を全員そのまま移行させる。ゼロからの獲得はしない。</li>
+            <li>ホリデー期の屋内活動（ハンパー梱包、トイドライブ、ホリデーディナー）に供給を寄せる。年間で最も枠が多い時期です。</li>
+            <li>「近くに0件」を絶対に出さない。開けば常に5〜10件ある状態を、手作業ででも維持する。</li>
+          </ul>
+          <div class="kill">
+            <h4>Kill Criteria</h4>
+            <p>アプリ経由の Show-Up Rate が、人力運用時より<strong>15ポイント以上落ちた</strong>ら、摩擦のパラドックスが現実化しています。機能追加を止め、05章の4つの打ち手の実装に全リソースを寄せてください。</p>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div class="phase-head">
+            <span class="phase-dates">DAY 76–90 · NOV 29 – DEC 13</span>
+            <h3>定着の測定</h3>
+          </div>
+          <p class="phase-goal">目的：H3（1回やった人は2回目をやる）の判定。事業になるかどうかの分水嶺。</p>
+          <ul>
+            <li>見る数字：View→Swipe率、Swipe→Join率、Join→実参加率、そして<strong>2回目参加率</strong>。</li>
+            <li>1回参加して2回目をやらなかった人、全員に理由を聞く。ここに次の1年分の示唆があります。</li>
+            <li>12月上旬はUBC/SFUの試験期間で学生の可処分時間が消えます<span class="tag">要確認</span>。逆に12月20日以降の冬休みは、供給・需要ともに最も厚い2週間になります。</li>
+          </ul>
+          <div class="kill">
+            <h4>Go / No-Go</h4>
+            <p><strong>Repeat Rate 25%以上</strong>かつ<strong>Show-Up Rate 75%以上</strong>なら、資金調達とチーム構築に進む根拠があります。どちらかが大きく下回るなら、90日をもう1周——ただし今度は、外した方の仮説だけを狙って。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12 -->
+      <section id="s12">
+        <div class="sec-head">
+          <span class="sec-num">12</span>
+          <h2>1年ロードマップ</h2>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 16%;">四半期</th>
+                <th style="width: 30%;">焦点</th>
+                <th>到達目標</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="num">Q4 2026<br><span style="color:var(--ink-mute);font-size:11px;">Day 1–90</span></td>
+                <td>仮説検証。バンクーバー1都市、Tier 0のみ。</td>
+                <td>100登録 / 30実参加 / 80時間。3つの仮説に白黒をつける。</td>
+              </tr>
+              <tr>
+                <td class="num">Q1 2027</td>
+                <td>密度。エリアをダウンタウン＋UBC周辺に固定し、常時10件を維持する。</td>
+                <td>30団体 / 500登録 / Repeat 30% / <strong>1,000時間</strong>。</td>
+              </tr>
+              <tr>
+                <td class="num">Q2 2027</td>
+                <td>Tier 1 の解禁（オリエンテーション管理機能）。団体側のダッシュボード。</td>
+                <td>Filled Shift Rate 85%。市・パークボードと最初の有償契約1件。</td>
+              </tr>
+              <tr>
+                <td class="num">Q3 2027</td>
+                <td>2都市目（Victoria か Seattle）。ここで初めて「横展開できる形か」が試される。</td>
+                <td>累計 <strong>10,000時間</strong>。シード調達、または助成金で18か月の滑走路。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          AIレコメンド（空き時間・場所・スキル・地域需要から「今日あなたにできる最も価値あること」を提案する層）は、
+          このロードマップに入っていません。理由は単純で、<strong>レコメンドは在庫がなければ成立しない</strong>からです。
+          1都市に常時500件の活動が並ぶまで、推薦アルゴリズムは「近い順」に負けます。
+          Vision としては極めて強いので語り続けてください。ただし実装は、密度が先です。
+        </p>
+      </section>
+
+      <!-- 13 -->
+      <section id="s13">
+        <div class="sec-head">
+          <span class="sec-num">13</span>
+          <h2>Risks — 順番に潰す</h2>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 20%;">リスク</th>
+                <th style="width: 13%;">深刻度</th>
+                <th>対処</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>供給の枯渇</strong></td>
+                <td><span class="no">致命的</span></td>
+                <td>「近くに0件」が3回続けば削除される、というあなたの読みは正しい。対処は範囲を狭めること一択。Vancouver × Tier 0 × 週末まで絞り、常時5〜10件を手作業ででも維持する。</td>
+              </tr>
+              <tr>
+                <td><strong>無断欠席によるNPOの離脱</strong></td>
+                <td><span class="no">致命的</span></td>
+                <td>05章の4つの打ち手。Show-Up Rate を North Star と同格で監視する。</td>
+              </tr>
+              <tr>
+                <td><strong>安全・保険・責任</strong></td>
+                <td><span class="no">高</span></td>
+                <td>誰かが活動中に怪我をしたとき、責任の所在はどこか。当面は<strong>「保険は主催団体が持つ」を利用規約で明示し、Voluntinderは紹介のみ</strong>とする。Concierge段階で弁護士に1時間相談する<span class="tag">要確認</span>。</td>
+              </tr>
+              <tr>
+                <td><strong>商標（Tinder）</strong></td>
+                <td>中</td>
+                <td>検証中の使用は問題になりにくい。ブランド投資・法人化の前に代替名を用意し、専門家に確認する。</td>
+              </tr>
+              <tr>
+                <td><strong>季節性</strong></td>
+                <td>中</td>
+                <td>雨季は屋内活動へ、夏は屋外へ。カテゴリ構成を季節で入れ替える運用を前提に設計する。</td>
+              </tr>
+              <tr>
+                <td><strong>創業者1人</strong></td>
+                <td>中</td>
+                <td>Concierge MVP は運用負荷が高く、1人では30件が限界。Day 45 までに、供給開拓を担う共同創業者候補を1人見つける。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 14 -->
+      <section id="s14">
+        <div class="sec-head">
+          <span class="sec-num">14</span>
+          <h2>次の7日間にやること</h2>
+        </div>
+
+        <p>計画を読んだ翌週に何をするかだけが、実際には計画の価値を決めます。</p>
+
+        <ol class="checklist">
+          <li><span class="day">SEP 15</span><span>インタビュー対象40人のリストを1枚のシートに書き出す。名前が埋まらない枠が、そのままあなたのネットワークの穴です。</span></li>
+          <li><span class="day">SEP 15</span><span>04章の質問セットを、そのままインタビュー台本に落とす。20分・5問・録音。</span></li>
+          <li><span class="day">SEP 16</span><span>バンクーバーの Tier 0 活動を30件リストアップ。既存ディレクトリを1時間眺めれば、供給の実在量が肌でわかります。</span></li>
+          <li><span class="day">SEP 17</span><span>最初のインタビュー3件を実施。台本は3件ごとに書き換える。</span></li>
+          <li><span class="day">SEP 18</span><span>NPO 10団体に連絡。プロダクトの説明はせず、「来週土曜、人手が足りない活動はありますか」だけを聞く。</span></li>
+          <li><span class="day">SEP 19</span><span>登録フォーム（設問7つ）を公開し、最初の20人を集める。まずは友人と学内から。</span></li>
+          <li><span class="day">SEP 21</span><span>週次レビュー。インタビュー本数、団体数、供給件数の3つだけを記録する。この3つを90日間、毎週書き続ける。</span></li>
+        </ol>
+      </section>
+
+      <div class="closing">
+        <p>
+          最大の難関はアプリ開発ではありません。<strong>「Voluntinderに出せば埋まる」という評判を、
+          最初の10団体との間に作れるかどうか</strong>です。そこから先は、供給が自分で歩き始めます。
+        </p>
+        <p style="color: var(--cedar);">
+          最初の1時間を、誰かのために作ってください。残りは、それを1,000倍にするだけの話です。
+        </p>
+      </div>
+
+    </main>
+  </div>
+</div>
