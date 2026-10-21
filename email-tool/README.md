@@ -1,6 +1,9 @@
-# 英文メール作成（email-tool）
+# 英文メッセージ作成（email-tool）
 
-日本語でざっくり書いた内容を、相手との関係（上司・取引先 / 同僚 / 友人）に合わせた自然な英文メール（件名＋本文）に書き直すWebアプリです。
+日本語でざっくり書いた内容を、自然な英文に書き直すWebアプリです。
+
+- 送り先：メール（件名＋本文） / LINE / Instagram / WhatsApp（メッセージ1つ）
+- 相手との関係：上司・取引先 / 同僚 / 友人 に合わせて丁寧さを変える
 
 - Next.js（App Router）+ TypeScript + Tailwind CSS
 - AI：Anthropic API（Claude Haiku 5.5 / `claude-haiku-5-5`）
@@ -32,6 +35,7 @@ npm run dev
 
 ## ファイル構成
 
-- `app/page.tsx` … 画面（入力欄・関係ボタン・結果とコピー）
+- `app/page.tsx` … 画面（送り先・入力欄・関係ボタン・結果とコピー）
 - `app/api/generate/route.ts` … サーバー側でAIを呼ぶ処理（APIキーはここでだけ使う）
+- `lib/channels.ts` … 送り先の選択肢
 - `lib/relationships.ts` … 関係の選択肢

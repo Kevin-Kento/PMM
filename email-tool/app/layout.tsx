@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "英文メール作成",
-  description: "日本語のメモを自然な英文メールに書き直します",
+  title: "英文メッセージ作成",
+  description: "日本語のメモを自然な英文メールやチャットに書き直します",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -1,14 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { CHANNELS, type ChannelId } from "@/lib/channels";
 import { RELATIONSHIPS, type RelationshipId } from "@/lib/relationships";
 
-type Email = { subject: string; body: string };
+type Result = { subject: string; body: string } | { message: string };
 
 export default function Home() {
   const [text, setText] = useState("");
+  const [channel, setChannel] = useState<ChannelId>("email");
   const [relationship, setRelationship] = useState<RelationshipId>("formal");
-  const [email, setEmail] = useState<Email | null>(null);
+  const [result, setResult] = useState<Result | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -24,14 +26,14 @@ export default function Home() {
       const res = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text, relationship }),
+        body: JSON.stringify({ text, relationship, channel }),
       });
       const data = await res.json();
       if (!res.ok) {
         setError(data.error ?? "エラーが起きました。");
         return;
       }
-      setEmail(data as Email);
+      setResult(data as Result);
     } catch {
       setError("通信できませんでした。インターネット接続を確認してください。");
     } finally {
@@ -41,12 +43,23 @@ export default function Home() {
 
   return (
     <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-10 sm:py-16">
-      <h1 className="text-2xl font-bold tracking-tight">英文メール作成</h1>
+      <h1 className="text-2xl font-bold tracking-tight">英文メッセージ作成</h1>
       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        伝えたいことを日本語でざっくり書くと、自然な英文メールに整えます。
+        伝えたいことを日本語でざっくり書くと、自然な英文のメールやチャットに整えます。
       </p>
 
       <section className="mt-8 space-y-6">
+        <OptionGroup
+          legend="送り先"
+          options={CHANNELS}
+          value={channel}
+          onChange={(id) => {
+            setChannel(id);
+            setResult(null);
+          }}
+          columns="grid-cols-2 sm:grid-cols-4"
+        />
+
         <div>
           <label htmlFor="source" className="block text-sm font-medium">
             伝えたい内容（日本語）
@@ -61,29 +74,13 @@ export default function Home() {
           />
         </div>
 
-        <fieldset>
-          <legend className="text-sm font-medium">相手との関係</legend>
-          <div className="mt-2 grid grid-cols-3 gap-2">
-            {RELATIONSHIPS.map((r) => {
-              const selected = r.id === relationship;
-              return (
-                <button
-                  key={r.id}
-                  type="button"
-                  aria-pressed={selected}
-                  onClick={() => setRelationship(r.id)}
-                  className={`rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors ${
-                    selected
-                      ? "border-blue-600 bg-blue-600 text-white"
-                      : "border-zinc-300 bg-white hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:bg-zinc-800"
-                  }`}
-                >
-                  {r.label}
-                </button>
-              );
-            })}
-          </div>
-        </fieldset>
+        <OptionGroup
+          legend="相手との関係"
+          options={RELATIONSHIPS}
+          value={relationship}
+          onChange={setRelationship}
+          columns="grid-cols-3"
+        />
 
         <button
           type="button"
@@ -91,7 +88,7 @@ export default function Home() {
           disabled={loading}
           className="w-full rounded-lg bg-zinc-900 px-4 py-3 text-base font-semibold text-white transition-colors hover:bg-zinc-700 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
         >
-          {loading ? "作成中…" : "英文メールにする"}
+          {loading ? "作成中…" : channel === "email" ? "英文メールにする" : "英文メッセージにする"}
         </button>
 
         {error && (
@@ -104,13 +101,59 @@ export default function Home() {
         )}
       </section>
 
-      {email && (
+      {result && (
         <section className="mt-10 space-y-4" aria-live="polite">
-          <ResultBlock label="件名（Subject）" value={email.subject} />
-          <ResultBlock label="本文（Body）" value={email.body} multiline />
+          {"message" in result ? (
+            <ResultBlock label="メッセージ" value={result.message} multiline />
+          ) : (
+            <>
+              <ResultBlock label="件名（Subject）" value={result.subject} />
+              <ResultBlock label="本文（Body）" value={result.body} multiline />
+            </>
+          )}
         </section>
       )}
     </main>
+  );
+}
+
+function OptionGroup<T extends string>({
+  legend,
+  options,
+  value,
+  onChange,
+  columns,
+}: {
+  legend: string;
+  options: readonly { id: T; label: string }[];
+  value: T;
+  onChange: (id: T) => void;
+  columns: string;
+}) {
+  return (
+    <fieldset>
+      <legend className="text-sm font-medium">{legend}</legend>
+      <div className={`mt-2 grid gap-2 ${columns}`}>
+        {options.map((option) => {
+          const selected = option.id === value;
+          return (
+            <button
+              key={option.id}
+              type="button"
+              aria-pressed={selected}
+              onClick={() => onChange(option.id)}
+              className={`rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors ${
+                selected
+                  ? "border-blue-600 bg-blue-600 text-white"
+                  : "border-zinc-300 bg-white hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:bg-zinc-800"
+              }`}
+            >
+              {option.label}
+            </button>
+          );
+        })}
+      </div>
+    </fieldset>
   );
 }
 
